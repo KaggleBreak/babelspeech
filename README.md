@@ -19,8 +19,8 @@
 ## Part1 커리큘럼
 |요일   |주제   |발표자   |발표자료   |
 |---|---|---|---|
-|2017.10.16(월)|(딥NLP 기초) 1. Lecture 1a - Introduction |김무성||
-||(음성인식 기초) Course Overview and History, Articulatory Phonetics and ARPAbet transcription |김무성||
-||(텐서플로우 기초) Chapter 2 - TensorFlow Basics |이상열||
+|2017.10.16(월)|(딥NLP) 1. Lecture 1a - Introduction |김무성||
+||(음성인식) Course Overview and History, Articulatory Phonetics and ARPAbet transcription |김무성||
+||(텐서플로우) Chapter 2 - TensorFlow Basics |이상열||
 
 
