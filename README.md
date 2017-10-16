@@ -21,6 +21,8 @@
 |---|---|---|---|
 |2017.10.16(월)|(딥NLP) 1. Lecture 1a - Introduction |김무성||
 ||(음성인식) Course Overview and History, Articulatory Phonetics and ARPAbet transcription |김무성||
-||(텐서플로우) Chpater 1 machine learning odyseey & Chapter 2 - TensorFlow Basics |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch01/A%20machine-learning%20odyssey.ipynb)|
+||(텐서플로우) Chpater 1 machine learning odyseey & Chapter 2 - TensorFlow Basics |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch01/A%20machine-learning%20odyssey.ipynb)
+[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch02/TensorFlow%20essentials.ipynb)
+|
 
 
