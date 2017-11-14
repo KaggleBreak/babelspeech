@@ -21,7 +21,7 @@
 |---|---|---|---|
 |2017.10.16(월)|(딥NLP) 1. Lecture 1a - Introduction |김무성||
 ||(음성인식) Course Overview and History, Articulatory Phonetics and ARPAbet transcription |김무성||
-||(텐서플로우) Chpater 1 machine learning odyseey & Chapter 2 - TensorFlow Basics |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch01/A%20machine-learning%20odyssey.ipynb) [발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch02/TensorFlow%20essentials.ipynb)|
+||(텐서플로우) Chpater 1 machine learning odyseey & Chapter 2 - TensorFlow Basics |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch02/TensorFlow%20essentials.ipynb)|
 |2017.10.30(월)|(딥NLP 기초) Lecture 1b - Deep Neural Networks Are Our Friends|이상열||
 ||(음성인식 기초) Phonetics: Acoustic Phonetics |김혁|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/speech_basic/ch2/20171029_%EA%B9%80%ED%98%81_%EC%9D%8C%ED%96%A5%EC%9D%8C%EC%84%B1%ED%95%99.pptx)|
 ||(텐서플로우) Ch 3 Linear regression and beyond |장재윤||
