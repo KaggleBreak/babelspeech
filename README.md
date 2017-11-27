@@ -29,9 +29,9 @@
 ||(음성인식) Speech Recognition: Noisy Channel Model, HMMs, Forward, Viterbi, Word Error Rate |김소윤|[발표자료](https://web.stanford.edu/class/cs224s/lectures/224s.17.lec3.pdf)|
 ||(텐서플로우) Ch 4 An introduction to classification |박재선|[발표자료](https://github.com/BinRoot/TensorFlow-Book/tree/master/ch04_classification)|
 |2017.11.27(월)|(딥NLP) Lecture 2b - Overview of the Practicals|나영근|[발표자료](https://github.com/oxford-cs-deepnlp-2017/lectures/blob/master/Lecture%202b%20-%20Overview%20of%20the%20Practicals.pdf)|
-||(음성인식) Speech Recognition: Advanced Decoding, Finite State Transducers |김소윤||
 ||(텐서플로우) Ch 5 Automatically clustering data|김선기|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch05/Clustering.pptx)|
 |2017.12.11(월)|(딥NLP) Lecture 3 - Language Modelling and RNNs Part 1|||
+||(음성인식) Speech Recognition: Advanced Decoding, Finite State Transducers |김소윤||
 ||(음성인식) Speech Recognition: GMM Acoustic Modeling and Feature Extraction |김태흥||
 ||(텐서플로우) Ch 6 Hidden Markov models|김선기||
 
