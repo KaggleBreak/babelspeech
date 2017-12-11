@@ -33,7 +33,7 @@
 |2017.12.11(월)|(딥NLP) Lecture 3 - Language Modelling and RNNs Part 1|주일택||
 ||(음성인식) Speech Recognition: Advanced Decoding, Finite State Transducers |김소윤||
 ||(음성인식) Speech Recognition: GMM Acoustic Modeling and Feature Extraction |김태흥||
-||(텐서플로우) Ch 6 Hidden Markov models|이상열||
+||(텐서플로우) Ch 6 Hidden Markov models|이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part1/tf_basic/ch06/6_HMM.ipynb)|
 
 
 
