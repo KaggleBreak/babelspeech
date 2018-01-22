@@ -23,7 +23,7 @@
 ||(음성인식) Speech Recognition: GMM Acoustic Modeling and Feature Extraction|김태흥||
 ||(텐서플로우) Ch 6 Midden Markov Models |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part2/tf_basic/ch06/6_HMM.ipynb)|
 |2018.01.22(월)|(Deep NLP) Lecture 4 - Language Modelling and RNNs Part 2|김형락||
-||(음성인식) Speech Recognition: Neural Network Acoustic Models|||
+||(음성인식) Speech Recognition: Neural Network Acoustic Models|김영범||
 ||(텐서플로우) Ch 7 A peek into autoencoders |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part2/tf_basic/ch07/7_autoencoders.ipynb)|
 
 
