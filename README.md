@@ -25,6 +25,9 @@
 |2018.01.22(월)|(Deep NLP) Lecture 4 - Language Modelling and RNNs Part 2|김형락||
 ||(음성인식) Speech Recognition: Neural Network Acoustic Models|김영범||
 ||(텐서플로우) Ch 7 A peek into autoencoders |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part2/tf_basic/ch07/7_autoencoders.ipynb)|
+|2018.02.05(월)|(Deep NLP) Lecture 5 - Text Classification|이상열||
+||(음성인식) Speech Recognition: End-to-End Neural Network Recognition|||
+||(텐서플로우) Ch 8 Reinforcement learning |송영숙||
 
 
 ## Part1 커리큘럼
