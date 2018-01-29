@@ -2,11 +2,13 @@
 
 바벨스피치 (캐글뽀개기X바벨피쉬) 파트2 평일반 스터디 자료모음
 
+바벨스피치 스터디는 kosslab과 메가존에서 장소 후원하고 있습니다.
+
 * 캐글뽀개기 : https://www.facebook.com/groups/kagglebreak/
 * 바벨피쉬 : https://www.facebook.com/groups/babelPish/
 
 * 구글드라이브 스케줄 : https://docs.google.com/spreadsheets/d/1vO5M5ygTE9P0TAMSpgR3Aw4Y_tO4l59ZzOqbcNKyphs/edit#gid=0
-* 장소 : 토즈 강남2호점 / 포스코ict 회의실
+* 장소 : 토즈 강남2호점 / 메가존
 * 파트2은 격주 월요일
 
 ## 교재
