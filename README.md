@@ -30,6 +30,9 @@
 |2018.02.05(월)|(Deep NLP) Lecture 5 - Text Classification|이상열|[발표자료1](https://github.com/KaggleBreak/babelspeech/blob/master/part2/deepnlp_basic/lecture_5/deepnlp_textclassification.ipynb) / [발표자료2](https://github.com/KaggleBreak/babelspeech/blob/master/part2/deepnlp_basic/lecture_5/deepnlp_reference_summary.ipynb)|
 ||(음성인식) Speech Recognition: End-to-End Neural Network Recognition|송치성||
 ||(텐서플로우) Ch 8 Reinforcement learning |송영숙|[발표자료](https://github.com/songys/ch08/blob/master/Concept01_rl.ipynb)|
+|2018.02.26(월)|(Deep NLP) Lecture 6 - Deep NLP on Nvidia GPUs|한재근||
+||(음성인식) Conversational Agents: Introduction and Frame-Based Dialogue |송영숙||
+||(텐서플로우) Ch 9 Convolutional neural networks |김태완||
 
 
 ## Part1 커리큘럼
