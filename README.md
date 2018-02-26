@@ -31,7 +31,7 @@
 ||(음성인식) Speech Recognition: End-to-End Neural Network Recognition|송치성||
 ||(텐서플로우) Ch 8 Reinforcement learning |송영숙|[발표자료](https://github.com/songys/ch08/blob/master/Concept01_rl.ipynb)|
 |2018.02.26(월)|(Deep NLP) Lecture 6 - Deep NLP on Nvidia GPUs|한재근||
-||(음성인식) Conversational Agents: Introduction and Frame-Based Dialogue |송영숙||
+||(음성인식) Conversational Agents: Introduction and Frame-Based Dialogue |송영숙|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part2/speech_basic/Conversational_Agents/%EB%8C%80%ED%99%94%EC%84%A4%EA%B3%84.pdf)|
 ||(텐서플로우) Ch 9 Convolutional neural networks |김태완|[발표자료](https://github.com/taewanme/documents/blob/master/2018/02/Chapter09.CNN.ipynb)|
 
 
