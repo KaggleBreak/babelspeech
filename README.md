@@ -32,7 +32,7 @@
 ||(텐서플로우) Ch 8 Reinforcement learning |송영숙|[발표자료](https://github.com/songys/ch08/blob/master/Concept01_rl.ipynb)|
 |2018.02.26(월)|(Deep NLP) Lecture 6 - Deep NLP on Nvidia GPUs|한재근||
 ||(음성인식) Conversational Agents: Introduction and Frame-Based Dialogue |송영숙||
-||(텐서플로우) Ch 9 Convolutional neural networks |김태완||
+||(텐서플로우) Ch 9 Convolutional neural networks |김태완|[발표자료](https://github.com/taewanme/documents/blob/master/2018/02/Chapter09.CNN.ipynb)|
 
 
 ## Part1 커리큘럼
