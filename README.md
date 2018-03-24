@@ -6,17 +6,24 @@
 
 * 캐글뽀개기 : https://www.facebook.com/groups/kagglebreak/
 * 바벨피쉬 : https://www.facebook.com/groups/babelPish/
-
 * 구글드라이브 스케줄 : https://docs.google.com/spreadsheets/d/1vO5M5ygTE9P0TAMSpgR3Aw4Y_tO4l59ZzOqbcNKyphs/edit#gid=0
 * 장소 : 토즈 강남2호점 / 메가존
 * 파트3은 격주 월요일
 
 ## 교재
 * (딥NLP 기초) Deep Learning for Natural Language Processing - https://github.com/oxford-cs-deepnlp-2017/lectures
-* (음성인식 기초) CS224S / LINGUIST285 - Spoken Language Processing - https://web.stanford.edu/class/cs224s/
-* (텐서플로우 기초) Machine Learning with TensorFlow http://www.tensorflowbook.com/ 
-* (참고 자료) 텐서플로우 실습 코드 https://github.com/BinRoot/TensorFlow-Book
+* (음성인식 기초) Spoken Language Processing: A Guide to Theory, Algorithm and System Development
+* (Generative Model) Generative Adversarial Networks (GANs) by Udacity (https://www.nodalpoint.com/gans-udacity/)
+* (참고 자료) GAN 논문 모음 (https://github.com/wiseodd/generative-models)
+* (코드) 케라스 실습 (https://github.com/eriklindernoren/Keras-GAN)
 
+
+## Part3 커리큘럼
+|요일   |주제   |발표자   |발표자료   |
+|---|---|---|---|
+|2018.04.02(월)|(음성인식) 01. Intro & 02. Spoken Language Structure|송치성||
+||(딥NLP) 특강 - 엘라스틱서치 개요 및 소개|최원종||
+||(GM) Intro to GANs |이상열||
 
 ## Part2 커리큘럼
 |요일   |주제   |발표자   |발표자료   |
@@ -33,7 +40,9 @@
 |2018.02.26(월)|(Deep NLP) Lecture 6 - Deep NLP on Nvidia GPUs|한재근||
 ||(음성인식) Conversational Agents: Introduction and Frame-Based Dialogue |송영숙|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part2/speech_basic/Conversational_Agents/%EB%8C%80%ED%99%94%EC%84%A4%EA%B3%84.pdf)|
 ||(텐서플로우) Ch 9 Convolutional neural networks |김태완|[발표자료](https://github.com/taewanme/documents/blob/master/2018/02/Chapter09.CNN.ipynb)|
-
+|2018.03.19(월)|(Deep NLP) Lecture 7 - Conditional Language Models|송영숙||
+||(음성인식) Conversational Agents: Dialog Acts, Information State, and Markov Decision Processes |박은정|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part2/speech_basic/Conversational_Agents/224s.17.lec11Park.pptx)|
+||(텐서플로우) Ch 10 Recurrent neural networks |박상원|[발표자료](https://github.com/ansonswpark/babelspeech/blob/master/part2/tf_basic/ch10/SeriesPredictor.ipynb)|
 
 ## Part1 커리큘럼
 |요일   |주제   |발표자   |발표자료   |
