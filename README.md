@@ -7,7 +7,7 @@
 * 캐글뽀개기 : https://www.facebook.com/groups/kagglebreak/
 * 바벨피쉬 : https://www.facebook.com/groups/babelPish/
 * 구글드라이브 스케줄 : https://docs.google.com/spreadsheets/d/1vO5M5ygTE9P0TAMSpgR3Aw4Y_tO4l59ZzOqbcNKyphs/edit#gid=0
-* 장소 : 토즈 강남2호점 / 메가존
+* 장소 : 메가존(역삼역 3번 출구, 갈라빌딩 지하 1층)
 * 파트3은 격주 월요일
 
 ## 교재
@@ -24,6 +24,7 @@
 |2018.04.02(월)|(음성인식) 01. Intro & 02. Spoken Language Structure|송치성||
 ||(딥NLP) 특강 - 엘라스틱서치 개요 및 소개|최원종||
 ||(GM) Intro to GANs |이상열||
+
 
 ## Part2 커리큘럼
 |요일   |주제   |발표자   |발표자료   |
