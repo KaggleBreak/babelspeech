@@ -22,7 +22,7 @@
 |요일   |주제   |발표자   |발표자료   |
 |---|---|---|---|
 |2018.04.02(월)|(음성인식) 01. Intro & 02. Spoken Language Structure|송치성||
-||(딥NLP) 특강 - 엘라스틱서치 개요 및 소개|최원종||
+||(딥NLP) 특강 - 엘라스틱서치 개요 및 소개|최원종|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/deepnlp_basic/%ED%8A%B9%EA%B0%95/Elasticsearch-%EA%B0%9C%EC%9A%94.pdf)|
 ||(GM) Intro to GANs |이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part3/gm/gan/intro/intro.ipynb)|
 
 
