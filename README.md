@@ -26,7 +26,7 @@
 ||(GM) Intro to GANs |이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part3/gm/gan/intro/intro.ipynb)|
 |2018.04.16(월)|(음성인식 기초) 03. PROBABILITY, STATISTICS AND INFORMATION THEORY|이수빈||
 ||(NLP) Lecture 8 - Generating Language with Attention|김태흥||
-||(GM) Generative Modeling Review |이상열||
+||(GM) Generative Modeling Review |이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/gm_review/Review.ipynb)|
 
 
 ## Part2 커리큘럼
