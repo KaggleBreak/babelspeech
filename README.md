@@ -27,6 +27,9 @@
 |2018.04.16(월)|(음성인식 기초) 03. PROBABILITY, STATISTICS AND INFORMATION THEORY|이수빈||
 ||(NLP) Lecture 8 - Generating Language with Attention|김태흥||
 ||(GM) Generative Modeling Review |이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/gm_review/Review.ipynb)|
+|2018.04.30(월)|(음성인식 기초) 04. PATTERN RECOGNITION|윤희백||
+||(NLP)Lecture 9 - Speech Recognition (ASR)|박희준|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/speech/Lecture-9-Speech-Recognition_%ED%9D%AC%EC%A4%80.pdf)|
+||(GM) Variational Autoencoders|김민석|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/vae/vae.pdf)|
 
 
 ## Part2 커리큘럼
