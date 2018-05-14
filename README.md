@@ -32,7 +32,7 @@
 ||(GM) Variational Autoencoders|김민석|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/vae/vae.pdf)|
 |2018.05.14(월)|(음성인식 기초) 05. DIGITAL SIGNAL PROCESSING|송치성||
 ||(NLP)  Lecture 10 - Text to Speech (TTS)|최현철||
-||(GM) Deep Convolutional GANs|박상원||
+||(GM) Deep Convolutional GANs|박상원|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/gan/DCGAN.pdf)|
 
 
 ## Part2 커리큘럼
