@@ -29,7 +29,10 @@
 ||(GM) Generative Modeling Review |이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/gm_review/Review.ipynb)|
 |2018.04.30(월)|(음성인식 기초) 04. PATTERN RECOGNITION|윤희백||
 ||(NLP)Lecture 9 - Speech Recognition (ASR)|박희준|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/speech/Lecture-9-Speech-Recognition_%ED%9D%AC%EC%A4%80.pdf)|
-||(GM) Variational Autoencoders|김민석|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/vae/vae.pdf)|
+||(GM) Deep Convolutional GANs||[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/vae/vae.pdf)|
+|2018.05.14(월)|(음성인식 기초) 05. DIGITAL SIGNAL PROCESSING|송치성||
+||(NLP)  Lecture 10 - Text to Speech (TTS)|최현철||
+||(GM) Deep Convolutional GANs|박상원||
 
 
 ## Part2 커리큘럼
