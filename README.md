@@ -30,7 +30,7 @@
 |2018.04.30(월)|(음성인식 기초) 04. PATTERN RECOGNITION|윤희백||
 ||(NLP)Lecture 9 - Speech Recognition (ASR)|박희준|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/speech/Lecture-9-Speech-Recognition_%ED%9D%AC%EC%A4%80.pdf)|
 ||(GM) Variational Autoencoders|김민석|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/udemy/vae/vae.pdf)|
-|2018.05.14(월)|(음성인식 기초) 05. DIGITAL SIGNAL PROCESSING|송치성||
+|2018.05.14(월)|(음성인식 기초) 05. DIGITAL SIGNAL PROCESSING|송치성|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/speech/Digital-Signal-Processing_%EB%B0%94%EB%B2%A8%EC%8A%A4%ED%94%BC%EC%B9%98_%EC%86%A1%EC%B9%98%EC%84%B1.pdf)|
 ||(NLP)  Lecture 10 - Text to Speech (TTS)|최현철||
 ||(GM) Deep Convolutional GANs|박상원|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/gan/DCGAN.pdf)|
 
