@@ -33,6 +33,9 @@
 |2018.05.14(월)|(음성인식 기초) 05. DIGITAL SIGNAL PROCESSING|송치성|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/speech/Digital-Signal-Processing_%EB%B0%94%EB%B2%A8%EC%8A%A4%ED%94%BC%EC%B9%98_%EC%86%A1%EC%B9%98%EC%84%B1.pdf)|
 ||(NLP)  Lecture 10 - Text to Speech (TTS)|최현철||
 ||(GM) Deep Convolutional GANs|박상원|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/gan/DCGAN.pdf)|
+|2018.05.28(월)|(NLP)  Lecture 11 - Question Answering|홍수린||
+||(NLP) Lecture 10 - Text to Speech (TTS)|최현철||
+||(GM) Semi-Supervised learning with GANs|박준영||
 
 
 ## Part2 커리큘럼
