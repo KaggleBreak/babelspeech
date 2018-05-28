@@ -1,0 +1,240 @@
+1
+00:00:00,000 --> 00:00:03,060
+All right, now it's time to go through the solution of the semi-supervised GAN
+
+2
+00:00:03,060 --> 00:00:06,650
+on SBHN Notebook.
+
+3
+00:00:06,650 --> 00:00:11,669
+We had you implement the global average pooling layer of the discriminator.
+
+4
+00:00:11,669 --> 00:00:13,560
+This just needs to take the average across
+
+5
+00:00:13,560 --> 00:00:16,585
+the spatial dimensions of the last layer of features.
+
+6
+00:00:16,585 --> 00:00:20,114
+We can take an average by using the reduce mean app.
+
+7
+00:00:20,114 --> 00:00:24,463
+And the most important part is that we just specify the axes to average over.
+
+8
+00:00:24,463 --> 00:00:26,419
+Axis 0 is the batch,
+
+9
+00:00:26,420 --> 00:00:28,678
+access 1 is the height,
+
+10
+00:00:28,678 --> 00:00:30,479
+access 2 is the width,
+
+11
+00:00:30,480 --> 00:00:34,560
+and access 3 is the channels of the feature map.
+
+12
+00:00:34,560 --> 00:00:38,064
+So, we want to take the average over access 1 and access 2,
+
+13
+00:00:38,064 --> 00:00:41,368
+to get rid of those spatial dimensions.
+
+14
+00:00:41,368 --> 00:00:43,875
+The next thing that we had you implement was the logits
+
+15
+00:00:43,875 --> 00:00:46,762
+for the different classes of the classifier.
+
+16
+00:00:46,762 --> 00:00:48,928
+And this part, there is actually
+
+17
+00:00:48,929 --> 00:00:52,429
+a decision that you could make about how you want to design the model.
+
+18
+00:00:52,429 --> 00:00:57,030
+We want to have a total of 11 different class probabilities,
+
+19
+00:00:57,030 --> 00:01:00,594
+and we represent that using a softmax.
+
+20
+00:01:00,594 --> 00:01:04,974
+One thing that's interesting about a softmax is that it's over parameterized.
+
+21
+00:01:04,974 --> 00:01:10,750
+The softmax normalizes itself so that it always has an output that sums to 1.
+
+22
+00:01:10,750 --> 00:01:14,129
+That means if you know the probabilities of the first 10 classes,
+
+23
+00:01:14,129 --> 00:01:18,748
+the 11th class is just one minus those first 10 probabilities.
+
+24
+00:01:18,748 --> 00:01:20,458
+In terms of the logits,
+
+25
+00:01:20,459 --> 00:01:23,444
+this means that you can set one of the logits to zero,
+
+26
+00:01:23,444 --> 00:01:26,608
+and the other 10 logits can control
+
+27
+00:01:26,608 --> 00:01:31,750
+the probability distribution over all 11 classes perfectly fine.
+
+28
+00:01:31,750 --> 00:01:34,379
+So, you have a choice of whether you want to actually have
+
+29
+00:01:34,379 --> 00:01:37,424
+a map mall that outputs 11 values,
+
+30
+00:01:37,424 --> 00:01:44,578
+or a map mall that outputs 10 and then set the extra one to zero.
+
+31
+00:01:44,578 --> 00:01:49,044
+We actually implemented both both versions so that you can see how they both work.
+
+32
+00:01:49,045 --> 00:01:52,650
+So, here we just say that we're going to pay attention to
+
+33
+00:01:52,650 --> 00:01:57,680
+this extra class switch to decide whether we should output 10 values or 11.
+
+34
+00:01:57,680 --> 00:02:04,920
+The next thing that we had you implement is the logits for the Sigmoid value.
+
+35
+00:02:04,920 --> 00:02:08,310
+We start off by remembering that the softmax needs to
+
+36
+00:02:08,310 --> 00:02:13,079
+represent a distribution over the 10 real classes and the one fake class.
+
+37
+00:02:13,079 --> 00:02:15,930
+The way that it does this will change depending on whether we've
+
+38
+00:02:15,930 --> 00:02:18,734
+decided to pursue the 11 class softmax,
+
+39
+00:02:18,734 --> 00:02:21,675
+or the 10 class softmax strategy.
+
+40
+00:02:21,675 --> 00:02:24,824
+If we're pursuing the 11 class softmax strategy,
+
+41
+00:02:24,824 --> 00:02:29,599
+then we need to actually split into two sets of logits.
+
+42
+00:02:29,599 --> 00:02:33,728
+We have 10 different logits giving us the distribution of the real classes,
+
+43
+00:02:33,729 --> 00:02:38,288
+and then we have one extra logit for the fake class.
+
+44
+00:02:38,288 --> 00:02:41,464
+And all of those actually come out of
+
+45
+00:02:41,465 --> 00:02:48,150
+the map mall and all of them are independently parameterized.
+
+46
+00:02:48,150 --> 00:02:50,992
+If we decided to only do a 10 class map mall,
+
+47
+00:02:50,992 --> 00:02:53,546
+then we can actually just take the output of the map mall,
+
+48
+00:02:53,546 --> 00:02:55,930
+and that gives us our largest for the real classes.
+
+49
+00:02:55,930 --> 00:03:00,223
+We also just hard class the logit for the fake class to zero.
+
+50
+00:03:00,223 --> 00:03:02,978
+And then the normalization of
+
+51
+00:03:02,979 --> 00:03:07,525
+the softmax will decide how much probability mass gets assigned to the fake class.
+
+52
+00:03:07,525 --> 00:03:10,283
+We want to actually compute
+
+53
+00:03:10,283 --> 00:03:15,894
+the log-sum-exp of all of the logits corresponding to the real class,
+
+54
+00:03:15,895 --> 00:03:19,718
+and then subtract off the logit corresponding to the fake class.
+
+55
+00:03:19,718 --> 00:03:23,549
+When we do this log-sum-exp,
+
+56
+00:03:23,550 --> 00:03:26,468
+we're going to subtract off the max like we described in
+
+57
+00:03:26,468 --> 00:03:29,739
+the trick for numerical stability up above.
+
+58
+00:03:29,740 --> 00:03:36,473
+And then we need to add that max back on later so that we don't change the final result.
+
+59
+00:03:36,473 --> 00:03:41,560
+We want this expression to be algebraically equivalent to the naive log-sum-exp.
+
+60
+00:03:41,560 --> 00:00:00,000
+But we just want it to be rearranged into that numerically stable form.
+

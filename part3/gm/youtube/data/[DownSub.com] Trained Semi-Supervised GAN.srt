@@ -1,0 +1,276 @@
+1
+00:00:00,000 --> 00:00:01,995
+After you've implemented everything,
+
+2
+00:00:01,995 --> 00:00:04,099
+when you run the notebook,
+
+3
+00:00:04,099 --> 00:00:06,509
+Cell 18 is where most of the action happens.
+
+4
+00:00:06,509 --> 00:00:09,689
+You can see it print out the Epoch number over time,
+
+5
+00:00:09,689 --> 00:00:14,070
+and then about 45 seconds after each Epoch starts,
+
+6
+00:00:14,070 --> 00:00:17,053
+it should print out the classifier training accuracy,
+
+7
+00:00:17,053 --> 00:00:22,768
+the classifier test accuracy and the amount of time that the last step took.
+
+8
+00:00:22,768 --> 00:00:25,604
+You can use this to get an idea of how much things like
+
+9
+00:00:25,605 --> 00:00:29,940
+the size modal players affect the runtime of your notebook.
+
+10
+00:00:29,940 --> 00:00:31,725
+You should also see the time per Epoch,
+
+11
+00:00:31,725 --> 00:00:34,079
+which is maybe a little bit more useful for gauging
+
+12
+00:00:34,079 --> 00:00:37,484
+how long it will be before you see the next batch of samples.
+
+13
+00:00:37,484 --> 00:00:41,039
+At the end of each Epoch, you should also see the samples coming up.
+
+14
+00:00:41,039 --> 00:00:44,453
+Every time you run this notebook,
+
+15
+00:00:44,453 --> 00:00:47,009
+you'll get slightly different results.
+
+16
+00:00:47,009 --> 00:00:50,340
+The run that I'm showing here is maybe a little bit worse than average,
+
+17
+00:00:50,340 --> 00:00:55,149
+just so that you don't necessarily set too high of a target for yourself.
+
+18
+00:00:55,149 --> 00:01:00,899
+As we scroll through the history of what comes out of the training process,
+
+19
+00:01:00,899 --> 00:01:05,760
+you can see that over time the samples should become more recognizable as digits.
+
+20
+00:01:05,760 --> 00:01:08,745
+And also you should see that both the training accuracy
+
+21
+00:01:08,745 --> 00:01:12,810
+and the test accuracy increase over time, and eventually plateau.
+
+22
+00:01:12,810 --> 00:01:14,790
+After a while, we should start to see that
+
+23
+00:01:14,790 --> 00:01:18,750
+the training accuracy is quite a lot higher than the test accuracy.
+
+24
+00:01:18,750 --> 00:01:22,125
+This is because we're using so few label training examples.
+
+25
+00:01:22,125 --> 00:01:26,459
+It's a lot of work for the classifier to manage to generalize accurately.
+
+26
+00:01:26,459 --> 00:01:29,189
+On this run through the notebook,
+
+27
+00:01:29,189 --> 00:01:34,858
+I found that the accuracy peaked at about 69% on the test set.
+
+28
+00:01:34,858 --> 00:01:37,559
+And in a real application,
+
+29
+00:01:37,560 --> 00:01:41,125
+you shouldn't look at the test accuracy at every time step like this.
+
+30
+00:01:41,125 --> 00:01:45,733
+You should use a validation set to decide when to stop and then look at the test set.
+
+31
+00:01:45,733 --> 00:01:47,593
+But in order to run this notebook faster,
+
+32
+00:01:47,593 --> 00:01:50,099
+we only wanted to compute two different values,
+
+33
+00:01:50,099 --> 00:01:53,500
+train and test accuracy.
+
+34
+00:01:53,500 --> 00:01:57,950
+In general, you should see that you achieve a peak around this kind of value.
+
+35
+00:01:57,950 --> 00:02:02,165
+It should be somewhere between like 68 to 71 or 72%
+
+36
+00:02:02,165 --> 00:02:08,889
+accuracy.I have seen a wide range of values every time I rerun it.
+
+37
+00:02:08,889 --> 00:02:10,840
+You should also see that you have some kind of
+
+38
+00:02:10,840 --> 00:02:16,680
+recognizable but not necessarily high quality digits at the end of training.
+
+39
+00:02:16,680 --> 00:02:18,938
+This set up has mostly been optimized to get
+
+40
+00:02:18,938 --> 00:02:23,530
+good semi-supervised learning performance rather than to get good samples.
+
+41
+00:02:23,530 --> 00:02:26,800
+Getting really good samples is actually a lot harder than getting
+
+42
+00:02:26,800 --> 00:02:30,280
+good semi-supervised test accuracy.
+
+43
+00:02:30,280 --> 00:02:32,620
+It's one of the reasons that I think this is one of
+
+44
+00:02:32,620 --> 00:02:35,604
+the more useful things we can teach you about GANs at Udacity.
+
+45
+00:02:35,604 --> 00:02:38,620
+You can easily use GANs to do semi-supervised learning,
+
+46
+00:02:38,620 --> 00:02:41,203
+even if the learning process is not all that stable,
+
+47
+00:02:41,203 --> 00:02:43,568
+even if the images at the end are not all that great.
+
+48
+00:02:43,568 --> 00:02:45,938
+The images just need to be good enough to
+
+49
+00:02:45,938 --> 00:02:48,543
+give the classifier a little bit of extra practice.
+
+50
+00:02:48,544 --> 00:02:51,250
+And then it can begin to bring its test accuracy
+
+51
+00:02:51,250 --> 00:02:53,929
+up and be useful for you as a classifier.
+
+52
+00:02:53,929 --> 00:02:55,718
+If you look at the learning curves,
+
+53
+00:02:55,718 --> 00:02:58,329
+you should see that the training set accuracy goes up
+
+54
+00:02:58,330 --> 00:03:01,495
+really fast and eventually levels off somewhere near perfect.
+
+55
+00:03:01,495 --> 00:03:05,620
+You'll see that the test accuracy actually levels off a lot earlier.
+
+56
+00:03:05,620 --> 00:03:10,578
+But it's still much higher than it would be down around the 50% mark,
+
+57
+00:03:10,578 --> 00:03:13,449
+if we were actually not using semi-supervised learning.
+
+58
+00:03:13,449 --> 00:03:17,875
+All right, that's the end of the solution to the semi-supervised GAN notebook.
+
+59
+00:03:17,875 --> 00:03:22,370
+You've seen that you have a really powerful tool for regularizing classifiers.
+
+60
+00:03:22,370 --> 00:03:24,745
+And don't forget that in this notebook,
+
+61
+00:03:24,745 --> 00:03:26,110
+we've simplified things so that
+
+62
+00:03:26,110 --> 00:03:29,020
+the whole process runs in 25 minutes once you have it set up.
+
+63
+00:03:29,020 --> 00:03:31,419
+If you want to get more performance,
+
+64
+00:03:31,419 --> 00:03:35,905
+don't forget that there is also the GitHub repository linked at the end of the notebook,
+
+65
+00:03:35,905 --> 00:03:40,383
+where we show you how to get above 94% accuracy on this task.
+
+66
+00:03:40,383 --> 00:03:45,250
+This code is very easy to adapt and you can go and take it and apply it to any task where
+
+67
+00:03:45,250 --> 00:03:47,435
+you don't have enough labels and you'd
+
+68
+00:03:47,435 --> 00:03:50,663
+still like to build a train classifier that generalizes really well.
+
+69
+00:03:50,663 --> 00:00:00,000
+So, I hope this is useful to you and I hope you take it and go and do great things.
+

@@ -1,0 +1,148 @@
+1
+00:00:00,469 --> 00:00:07,121
+Finally, we compute the mean absolute difference between these two sets of moments,
+
+2
+00:00:07,121 --> 00:00:09,419
+and we use that as the loss for the generator.
+
+3
+00:00:09,419 --> 00:00:13,198
+That will encourage the generator to make sure that all of the future values in
+
+4
+00:00:13,198 --> 00:00:17,503
+the discriminator have approximately the same average value,
+
+5
+00:00:17,504 --> 00:00:22,320
+regardless of whether the discriminator is run on the input or run on generated samples.
+
+6
+00:00:22,320 --> 00:00:25,920
+Over time, this will force the generated samples to become very
+
+7
+00:00:25,920 --> 00:00:30,725
+similar to data samples and have all of the statistics be the same.
+
+8
+00:00:30,725 --> 00:00:32,655
+If any of the statistics don't match,
+
+9
+00:00:32,655 --> 00:00:34,798
+the discriminator can learn to pay attention to
+
+10
+00:00:34,798 --> 00:00:38,960
+different statistics in order to find the difference between the two distributions.
+
+11
+00:00:38,960 --> 00:00:40,439
+We also asked you to implement
+
+12
+00:00:40,439 --> 00:00:44,850
+the learning algorithm where we actually minimize each player's cost.
+
+13
+00:00:44,850 --> 00:00:51,079
+To do this, you first have to understand which variables are associated with each player.
+
+14
+00:00:51,079 --> 00:00:54,750
+We can get these two separate lists of variables by sorting
+
+15
+00:00:54,750 --> 00:00:58,829
+the list of all trainable variables into two different lists.
+
+16
+00:00:58,829 --> 00:01:01,353
+Because we used variable scopes,
+
+17
+00:01:01,353 --> 00:01:04,385
+we know that all the variables for the discriminator begin with the name,
+
+18
+00:01:04,385 --> 00:01:06,525
+"Discriminator," and all the variables for the generator
+
+19
+00:01:06,525 --> 00:01:08,838
+begin with the name, "Generator."
+
+20
+00:01:08,838 --> 00:01:13,408
+It's also a good idea to check and make sure that we got all of the variables.
+
+21
+00:01:13,409 --> 00:01:15,780
+Sometimes you might accidentally write a little bit of code
+
+22
+00:01:15,780 --> 00:01:19,125
+outside of one of these scopes and you might overlook something.
+
+23
+00:01:19,125 --> 00:01:22,140
+So we have an assert to make sure that all of
+
+24
+00:01:22,140 --> 00:01:25,980
+the trainable variables belong to one of these lists or the other.
+
+25
+00:01:25,980 --> 00:01:28,334
+The next part of that we asked you to implement is
+
+26
+00:01:28,334 --> 00:01:31,605
+the actual learning roles for each of the two players.
+
+27
+00:01:31,605 --> 00:01:37,078
+In both cases, you simply use the AdamOptimizer that's built into tensorflow and you
+
+28
+00:01:37,078 --> 00:01:39,764
+parse through the learning rate and Beta1 parameters
+
+29
+00:01:39,765 --> 00:01:43,310
+that have been provided earlier in the notebook.
+
+30
+00:01:43,310 --> 00:01:46,019
+It's important that each player
+
+31
+00:01:46,019 --> 00:01:49,765
+minimizes the loss with respect to that player's parameters.
+
+32
+00:01:49,765 --> 00:01:53,218
+So when we call Adam on the loss for the discriminator,
+
+33
+00:01:53,218 --> 00:01:58,318
+we ask it to optimize only the variables associated with the discriminator.
+
+34
+00:01:58,319 --> 00:02:01,108
+And likewise when we call Adam on the loss for the generator,
+
+35
+00:02:01,108 --> 00:02:05,658
+we ask it to optimize only the variables associated with the generator.
+
+36
+00:02:05,659 --> 00:02:08,294
+If we didn't include these var_list arguments,
+
+37
+00:02:08,294 --> 00:00:00,000
+Adam would optimize all the trainable variables by default.
+

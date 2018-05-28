@@ -1,0 +1,324 @@
+1
+00:00:00,000 --> 00:00:03,810
+Next, we had you implement the loss for the discriminator.
+
+2
+00:00:03,810 --> 00:00:06,293
+This is divided into two different parts.
+
+3
+00:00:06,293 --> 00:00:09,299
+The first part is the unsupervised part that I've highlighted here.
+
+4
+00:00:09,300 --> 00:00:13,169
+The unsupervised part, is divided into two different terms.
+
+5
+00:00:13,169 --> 00:00:14,955
+One is the loss on the real data,
+
+6
+00:00:14,955 --> 00:00:17,414
+and the other is a loss on the fake data.
+
+7
+00:00:17,414 --> 00:00:21,600
+In both cases, we're dealing with a binary classification problem.
+
+8
+00:00:21,600 --> 00:00:25,199
+So, we use the Sigmoid Cross entropy app to compute the loss.
+
+9
+00:00:25,199 --> 00:00:27,795
+For the real data, the labels are all ones
+
+10
+00:00:27,795 --> 00:00:31,010
+because we want to say that all the real data is real.
+
+11
+00:00:31,010 --> 00:00:33,090
+And, for the fake data the labels are
+
+12
+00:00:33,090 --> 00:00:36,600
+all zeros because we want to say all the fake data is fake.
+
+13
+00:00:36,600 --> 00:00:39,109
+In both cases, we just plug in the logits that we
+
+14
+00:00:39,109 --> 00:00:42,579
+computed up above using that log-sum-exp trick.
+
+15
+00:00:42,579 --> 00:00:46,079
+We chose these logits up above so that if you take the Sigmoid of them,
+
+16
+00:00:46,079 --> 00:00:49,725
+they give you the probability that the data is real rather than fake.
+
+17
+00:00:49,725 --> 00:00:51,868
+So, they're the correct thing to use here for
+
+18
+00:00:51,868 --> 00:00:55,140
+this binary real versus fake classification problem.
+
+19
+00:00:55,140 --> 00:00:58,125
+The second part of the loss for the discriminator is
+
+20
+00:00:58,125 --> 00:01:02,255
+the supervised portion of the semi-supervised learning algorithm.
+
+21
+00:01:02,255 --> 00:01:06,269
+Here, we actually take the cross entropy in terms of
+
+22
+00:01:06,269 --> 00:01:11,188
+the softmax between the labels for which class is present,
+
+23
+00:01:11,188 --> 00:01:15,798
+and the logits output over all the different classes.
+
+24
+00:01:15,799 --> 00:01:19,319
+One really important thing here is we need to remember to actually pay
+
+25
+00:01:19,319 --> 00:01:21,810
+attention only to the labels
+
+26
+00:01:21,810 --> 00:01:24,569
+that the label mask tells us we're allowed to say we're using.
+
+27
+00:01:24,569 --> 00:01:29,239
+We get the cross entropy for each example in the mini-batch.
+
+28
+00:01:29,239 --> 00:01:33,629
+And then we multiply by the label mask to make sure that we zero
+
+29
+00:01:33,629 --> 00:01:38,718
+out the cross entropy for any of the examples where we're supposed to ignore the label.
+
+30
+00:01:38,718 --> 00:01:41,363
+Then we want to take the mean cross entropy,
+
+31
+00:01:41,364 --> 00:01:45,510
+but we can't just use the tf.reduce_mean app,
+
+32
+00:01:45,510 --> 00:01:49,700
+because there is a mini-batch full of 128 examples here.
+
+33
+00:01:49,700 --> 00:01:52,468
+But most of them in an average mini-batch,
+
+34
+00:01:52,468 --> 00:01:53,923
+maybe even none of them,
+
+35
+00:01:53,924 --> 00:01:57,459
+have a label mask of one.
+
+36
+00:01:57,459 --> 00:01:59,370
+Instead, we get a different number of
+
+37
+00:01:59,370 --> 00:02:02,453
+labeled examples that we can actually use in each mini-batch.
+
+38
+00:02:02,453 --> 00:02:05,953
+So, we've got to explicitly compute
+
+39
+00:02:05,953 --> 00:02:10,348
+the numerator of the mean by
+
+40
+00:02:10,348 --> 00:02:14,984
+multiplying the label mask by each of the individual cross entropy switch example.
+
+41
+00:02:14,985 --> 00:02:18,658
+And then compute the denominator of that mean
+
+42
+00:02:18,658 --> 00:02:23,905
+by adding up the number of ones in our mini-batch of label masks.
+
+43
+00:02:23,905 --> 00:02:26,633
+Finally, there's one other little trick going on here.
+
+44
+00:02:26,633 --> 00:02:29,413
+If we have a mini-batch where nothing is labeled,
+
+45
+00:02:29,413 --> 00:02:31,500
+and here we're using so few labels that
+
+46
+00:02:31,500 --> 00:02:33,925
+a lot of our mini-batches are completely unlabelled,
+
+47
+00:02:33,925 --> 00:02:36,080
+we'd end up dividing by zero,
+
+48
+00:02:36,080 --> 00:02:38,593
+if all we had was this reduce sum here.
+
+49
+00:02:38,593 --> 00:02:42,834
+So, we take the max between the sum and one.
+
+50
+00:02:42,835 --> 00:02:44,264
+If the sum is zero,
+
+51
+00:02:44,264 --> 00:02:45,555
+then we divide by one,
+
+52
+00:02:45,555 --> 00:02:48,830
+and that doesn't actually change the value from the numerator.
+
+53
+00:02:48,830 --> 00:02:51,495
+So we either get a numerator of zero over one,
+
+54
+00:02:51,495 --> 00:02:53,848
+or we get a numerator of the sum of
+
+55
+00:02:53,848 --> 00:02:58,198
+all the cross entropies divided by the number of cross entropies we added up.
+
+56
+00:02:58,199 --> 00:03:04,449
+After we've computed both the supervised loss and both terms of the unsupervised loss,
+
+57
+00:03:04,449 --> 00:03:09,180
+we add all three of them together to get the complete loss for the discriminator.
+
+58
+00:03:09,180 --> 00:03:12,163
+Next we use the feature matching loss for the generator.
+
+59
+00:03:12,163 --> 00:03:16,484
+In statistics terminology, when we take a bunch of statistics from
+
+60
+00:03:16,485 --> 00:03:18,729
+one dataset and a bunch of statistics from
+
+61
+00:03:18,729 --> 00:03:22,608
+another dataset and we ask those statistics to be similar,
+
+62
+00:03:22,608 --> 00:03:26,145
+that's a learning technique called Moment Matching.
+
+63
+00:03:26,145 --> 00:03:29,639
+So, each of the statistics that we extract is called a Moment.
+
+64
+00:03:29,639 --> 00:03:30,809
+Here, the moments are
+
+65
+00:03:30,810 --> 00:03:36,000
+just the average values of features from the last layer of the discriminator.
+
+66
+00:03:36,000 --> 00:03:40,438
+First, we compute the moments on the data set itself by taking
+
+67
+00:03:40,438 --> 00:03:42,810
+the mean across the mini-batch of
+
+68
+00:03:42,810 --> 00:03:45,748
+all the features that we pulled out of the discriminator.
+
+69
+00:03:45,748 --> 00:03:49,055
+Next, we compute the same moments in the same way
+
+70
+00:03:49,055 --> 00:03:53,563
+but for the distribution of values that come from the generator,
+
+71
+00:03:53,563 --> 00:03:57,128
+rather than from the training dataset.
+
+72
+00:03:57,128 --> 00:04:02,774
+Finally, we compute the mean absolute difference between these two sets of moments,
+
+73
+00:04:02,775 --> 00:04:05,175
+and we use that as the loss for the generator.
+
+74
+00:04:05,175 --> 00:04:09,060
+That will encourage the generator to make sure that all of the feature values and
+
+75
+00:04:09,060 --> 00:04:13,258
+the discriminator have approximately the same average value,
+
+76
+00:04:13,258 --> 00:04:18,088
+regardless of whether the discriminator is run on the input or run on generated samples.
+
+77
+00:04:18,088 --> 00:04:21,689
+Over time, this will force the generated samples to become very
+
+78
+00:04:21,689 --> 00:04:26,610
+similar to data samples and have all of the statistics be the same.
+
+79
+00:04:26,610 --> 00:04:28,425
+If any of the statistics don't match,
+
+80
+00:04:28,425 --> 00:04:30,569
+the discriminator can learn to pay attention to
+
+81
+00:04:30,569 --> 00:00:00,000
+different statistics in order to find the difference between the two distributions.
+

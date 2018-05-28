@@ -1,0 +1,568 @@
+1
+00:00:00,000 --> 00:00:03,810
+Now that we've defined both our generator model and our discriminator model,
+
+2
+00:00:03,810 --> 00:00:06,179
+it's time to define the loss functions,
+
+3
+00:00:06,179 --> 00:00:09,298
+that will actually tell them what they should do when they start learning.
+
+4
+00:00:09,298 --> 00:00:11,890
+To make the notebook a little bit more convenient,
+
+5
+00:00:11,890 --> 00:00:14,400
+we've set up these size multipliers for you.
+
+6
+00:00:14,400 --> 00:00:17,100
+You've got one for the generator and one for the discriminator.
+
+7
+00:00:17,100 --> 00:00:19,980
+They're just numbers that we multiply by
+
+8
+00:00:19,980 --> 00:00:22,469
+some other hard-coded number to decide
+
+9
+00:00:22,469 --> 00:00:25,739
+the size of each layer on both the generator and the discriminator.
+
+10
+00:00:25,739 --> 00:00:29,039
+If you set these to small values like two or four,
+
+11
+00:00:29,039 --> 00:00:30,902
+then you won't get very good accuracy,
+
+12
+00:00:30,902 --> 00:00:33,020
+but the notebook should run a little bit faster.
+
+13
+00:00:33,020 --> 00:00:36,390
+So you can use those set to small values during the debugging stage,
+
+14
+00:00:36,390 --> 00:00:39,118
+and then set them back to 32 and 64 when you want to
+
+15
+00:00:39,118 --> 00:00:43,222
+actually reproduce the accuracy values that we tell you you ought to be able to get.
+
+16
+00:00:43,222 --> 00:00:47,280
+We've actually gone ahead and run the generator and the discriminator for you.
+
+17
+00:00:47,280 --> 00:00:51,234
+But we should look at these quickly so that you know what we're doing on your behalf.
+
+18
+00:00:51,234 --> 00:00:52,768
+And you can do it again yourself,
+
+19
+00:00:52,768 --> 00:00:55,118
+when you do this in a real project.
+
+20
+00:00:55,118 --> 00:00:57,000
+First off, we run the generator.
+
+21
+00:00:57,000 --> 00:01:00,210
+We call it on the input placeholder that we set up
+
+22
+00:01:00,210 --> 00:01:04,215
+where we'll feed random noise later on as the input to the generator.
+
+23
+00:01:04,215 --> 00:01:05,968
+By running the generator,
+
+24
+00:01:05,968 --> 00:01:10,214
+we get some samples that we can use as input to the discriminator later on.
+
+25
+00:01:10,215 --> 00:01:13,364
+Next we run the discriminator on the real data.
+
+26
+00:01:13,364 --> 00:01:15,840
+We can unpack all the outputs to the discriminator to get
+
+27
+00:01:15,840 --> 00:01:18,974
+things like the probability that the input is real,
+
+28
+00:01:18,974 --> 00:01:21,239
+the logits for the softmax that tells
+
+29
+00:01:21,239 --> 00:01:24,015
+us which of the classes is present in the real data,
+
+30
+00:01:24,015 --> 00:01:27,060
+and we can also get the logits for
+
+31
+00:01:27,060 --> 00:01:31,349
+the sigmoid that tells us whether the input is real or fake.
+
+32
+00:01:31,349 --> 00:01:34,409
+Finally, we also pull out the features that
+
+33
+00:01:34,409 --> 00:01:38,430
+we are going to use from one of the last hidden layers of the discriminator,
+
+34
+00:01:38,430 --> 00:01:43,858
+and we're going to use those for the feature matching loss later on.
+
+35
+00:01:43,858 --> 00:01:45,988
+Next, you run the discriminator again.
+
+36
+00:01:45,989 --> 00:01:52,200
+This time, we apply it to the samples rather than to the real data.
+
+37
+00:01:52,200 --> 00:01:55,280
+There's a few different important things to look at here.
+
+38
+00:01:55,280 --> 00:02:00,540
+The first is that we're now going to enable reuse for the variable scope.
+
+39
+00:02:00,540 --> 00:02:03,629
+This is a tensorflow feature where we don't need to
+
+40
+00:02:03,629 --> 00:02:09,330
+actually allocate the variables that define the weights and biases of the model again.
+
+41
+00:02:09,330 --> 00:02:13,335
+When we call the discriminator function for a second time,
+
+42
+00:02:13,335 --> 00:02:18,000
+it's going to ask for the same variable names as it asked for before.
+
+43
+00:02:18,000 --> 00:02:20,639
+And so by consulting the variable scope,
+
+44
+00:02:20,639 --> 00:02:24,739
+we can recover the variables that we already made in the first call to the discriminator,
+
+45
+00:02:24,739 --> 00:02:29,128
+and that will make sure that we train one discriminator with one set of weights,
+
+46
+00:02:29,128 --> 00:02:31,709
+instead of training one discriminator that looks at
+
+47
+00:02:31,710 --> 00:02:35,000
+the real data and one discriminator that looks at the fake samples.
+
+48
+00:02:35,000 --> 00:02:37,693
+The other thing we should think about here that's a little bit funny
+
+49
+00:02:37,693 --> 00:02:41,234
+is that there's batch normalization inside the discriminator.
+
+50
+00:02:41,235 --> 00:02:44,758
+In the first case, we call the discriminator on the real data and
+
+51
+00:02:44,758 --> 00:02:49,063
+compute all of its batch normalization statistics on the real data.
+
+52
+00:02:49,063 --> 00:02:51,405
+So we compute the mean of all the features on the real data,
+
+53
+00:02:51,405 --> 00:02:52,693
+we subtract that off,
+
+54
+00:02:52,693 --> 00:02:57,209
+we compute the standard deviation of the features on the real data,
+
+55
+00:02:57,210 --> 00:03:00,310
+and we divide by that to get a standard deviation of 1.
+
+56
+00:03:00,310 --> 00:03:03,943
+And then we make a separate call to the discriminator,
+
+57
+00:03:03,943 --> 00:03:08,334
+where we run it again this time purely on samples from the generator,
+
+58
+00:03:08,335 --> 00:03:13,405
+and recompute different values of all those batch normalization statistics.
+
+59
+00:03:13,405 --> 00:03:16,538
+So in a way, we're actually running two different functions here.
+
+60
+00:03:16,538 --> 00:03:19,788
+One function that's normalized using real statistics.
+
+61
+00:03:19,788 --> 00:03:23,355
+One function that's normalized using fake statistics.
+
+62
+00:03:23,355 --> 00:03:25,173
+This seems very counter-intuitive,
+
+63
+00:03:25,173 --> 00:03:28,889
+but the authors of the DCGAN paper found that this works really well.
+
+64
+00:03:28,889 --> 00:03:30,764
+If you look at the paper,
+
+65
+00:03:30,764 --> 00:03:33,180
+"Improved techniques for training GANs,"
+
+66
+00:03:33,180 --> 00:03:36,310
+we come up with a few alternatives that are a little bit less weird,
+
+67
+00:03:36,310 --> 00:03:39,465
+but all of them work about the same in practice,
+
+68
+00:03:39,465 --> 00:03:45,169
+even though some of them are more or less weird or more or less difficult to implement.
+
+69
+00:03:45,169 --> 00:03:50,340
+The next task for you is to implement the d_loss variable.
+
+70
+00:03:50,340 --> 00:03:54,163
+This variable needs to end up containing the loss for the discriminator.
+
+71
+00:03:54,163 --> 00:03:58,414
+We've said earlier that we're studying semi-supervised learning in this notebook,
+
+72
+00:03:58,414 --> 00:04:01,008
+and this is where the semi-supervised part happens.
+
+73
+00:04:01,008 --> 00:04:03,503
+We're going to add together two different loss functions.
+
+74
+00:04:03,503 --> 00:04:06,568
+One that's unsupervised and one that's supervised.
+
+75
+00:04:06,568 --> 00:04:11,293
+And the combination of those two losses will make the learning algorithm semi-supervised.
+
+76
+00:04:11,294 --> 00:04:14,520
+The first loss is the unsupervised loss.
+
+77
+00:04:14,520 --> 00:04:17,250
+The loss for the GAN problem where we want to tell the difference
+
+78
+00:04:17,250 --> 00:04:20,985
+between real data and fake samples that came from the generator.
+
+79
+00:04:20,985 --> 00:04:25,903
+We're going to do that by taking the logit for the sigmoid for the discriminator.
+
+80
+00:04:25,903 --> 00:04:27,180
+This logit gives us
+
+81
+00:04:27,180 --> 00:04:32,129
+the unnormalized log probability that the data is real rather than fake.
+
+82
+00:04:32,129 --> 00:04:37,324
+And we're going to set up a cross entropy loss for that binary classification problem.
+
+83
+00:04:37,324 --> 00:04:40,319
+Next, the second loss that we're going to add onto this first one,
+
+84
+00:04:40,319 --> 00:04:42,345
+is the supervised loss.
+
+85
+00:04:42,345 --> 00:04:47,699
+We're going to use a multiclass cross entropy loss to make sure that the softmax over
+
+86
+00:04:47,699 --> 00:04:50,490
+classes gets reshaped to output
+
+87
+00:04:50,490 --> 00:04:55,050
+the right distribution over classes and choose the correct class for each example.
+
+88
+00:04:55,050 --> 00:04:56,910
+When you implement the supervised loss,
+
+89
+00:04:56,910 --> 00:05:01,095
+it's very important to remember to use the label mask variable that we pass in.
+
+90
+00:05:01,095 --> 00:05:06,660
+The label mask variable is a vector that has length batch size.
+
+91
+00:05:06,660 --> 00:05:10,355
+So it has one entry for every example in the mini-batch.
+
+92
+00:05:10,355 --> 00:05:16,588
+Every entry of the label mask variable is either a 0 or 1.
+
+93
+00:05:16,588 --> 00:05:18,000
+If it's zero, it,
+
+94
+00:05:18,000 --> 00:05:21,120
+means that you should ignore the label for that example.
+
+95
+00:05:21,120 --> 00:05:22,285
+We have all the labels.
+
+96
+00:05:22,285 --> 00:05:25,110
+But in order to study semi-supervised learning performance,
+
+97
+00:05:25,110 --> 00:05:27,300
+we need to pretend that some of them are missing.
+
+98
+00:05:27,300 --> 00:05:31,110
+Later on, you could try experimenting with ignoring
+
+99
+00:05:31,110 --> 00:05:35,660
+this label mask variable and seeing if you can actually obtain a higher accuracy.
+
+100
+00:05:35,660 --> 00:05:38,204
+But when you're working in the main semi-supervised learning part,
+
+101
+00:05:38,204 --> 00:05:40,170
+you should be sure that you don't actually
+
+102
+00:05:40,170 --> 00:05:44,680
+use any of the labels that we're asking you to mask out.
+
+103
+00:05:44,680 --> 00:05:47,213
+After you've added up both the costs for the discriminator,
+
+104
+00:05:47,213 --> 00:05:50,500
+it's time to move on and build the cost for the generator.
+
+105
+00:05:50,500 --> 00:05:52,764
+Earlier when we made models like DCGANs,
+
+106
+00:05:52,764 --> 00:05:55,170
+we saw different losses for the generator than we're going to use now.
+
+107
+00:05:55,170 --> 00:05:58,314
+Here we're going to use a loss that Tim at
+
+108
+00:05:58,314 --> 00:06:02,194
+OpenAI invented specifically for semi-supervised learning.
+
+109
+00:06:02,194 --> 00:06:07,293
+Instead of trying to make the classifier make a mistake,
+
+110
+00:06:07,293 --> 00:06:11,829
+the generator is actually going to try to output features that are on average similar
+
+111
+00:06:11,829 --> 00:06:17,110
+to the features that are found by applying the real data to the discriminator.
+
+112
+00:06:17,110 --> 00:06:21,579
+So, up above, we pulled out the features from the last hidden layer of the discriminator.
+
+113
+00:06:21,579 --> 00:06:24,128
+We want to take their average and make
+
+114
+00:06:24,129 --> 00:06:26,620
+sure that the absolute value of the difference between
+
+115
+00:06:26,620 --> 00:06:28,778
+the average features on the data and
+
+116
+00:06:28,778 --> 00:06:33,069
+the average features on the samples is as small as possible,
+
+117
+00:06:33,069 --> 00:06:35,939
+and that will be the only loss that we use for the generator.
+
+118
+00:06:35,939 --> 00:06:37,750
+That loss tends not to work quite as
+
+119
+00:06:37,750 --> 00:06:41,334
+well in terms of producing samples that look realistic,
+
+120
+00:06:41,334 --> 00:06:44,935
+but it works really well for semi-supervised learning.
+
+121
+00:06:44,935 --> 00:06:47,987
+We don't know for sure why it works better for a semi-supervised learning,
+
+122
+00:06:47,987 --> 00:06:50,199
+that's mostly an empirical finding.
+
+123
+00:06:50,199 --> 00:06:53,860
+One thing we can say is that it seems a little bit more like this loss
+
+124
+00:06:53,860 --> 00:06:58,269
+should cause stable learning than some of the other losses that we use,
+
+125
+00:06:58,269 --> 00:07:02,139
+because it gives a specific target for where the generator ought to go.
+
+126
+00:07:02,139 --> 00:07:06,894
+Another thing we can see that might explain why these samples don't look quite as good,
+
+127
+00:07:06,894 --> 00:07:10,959
+is that it doesn't say exactly how every single example should change individually.
+
+128
+00:07:10,959 --> 00:07:15,759
+It just says what the average value of the features in the mini-batch should be.
+
+129
+00:07:15,759 --> 00:07:20,528
+But you can see how if you use more and more features and more and more data,
+
+130
+00:07:20,528 --> 00:07:26,266
+this is just a kind of moment matching in an adversarially learned space.
+
+131
+00:07:26,266 --> 00:07:30,879
+So, it should eventually force recovery of the correct data distribution.
+
+132
+00:07:30,879 --> 00:07:33,519
+Any loss in sample quality is just
+
+133
+00:07:33,519 --> 00:07:37,028
+due to the fact that we're using finite sizes for everything.
+
+134
+00:07:37,028 --> 00:07:40,329
+We finish this section with a little bit of boilerplate code that just
+
+135
+00:07:40,329 --> 00:07:44,245
+takes the argmax across the mini-batch of logits,
+
+136
+00:07:44,245 --> 00:07:47,410
+in order to tell which class is being
+
+137
+00:07:47,410 --> 00:07:50,819
+chosen by the classifier for each entry in the mini-batch.
+
+138
+00:07:50,819 --> 00:07:53,019
+We keep track of how many of those predictions are
+
+139
+00:07:53,019 --> 00:07:57,009
+correct and we make sure that we also have
+
+140
+00:07:57,009 --> 00:07:59,528
+a variable that only penalizes
+
+141
+00:07:59,528 --> 00:08:03,430
+the classifier for missing values where the label is available.
+
+142
+00:08:03,430 --> 00:00:00,000
+That will enable us to keep track of the error on the label training examples later on.
+

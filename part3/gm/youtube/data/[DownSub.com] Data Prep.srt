@@ -1,0 +1,240 @@
+1
+00:00:00,000 --> 00:00:02,939
+All right. Now we can dive in and start looking
+
+2
+00:00:02,939 --> 00:00:05,979
+at how we actually build this semi-supervised GAN.
+
+3
+00:00:05,979 --> 00:00:09,310
+At the start of this notebook we have a lot of boilerplate code.
+
+4
+00:00:09,310 --> 00:00:11,250
+We go through some standard imports that make
+
+5
+00:00:11,250 --> 00:00:13,669
+sure we have things like tensorflow and numpy.
+
+6
+00:00:13,669 --> 00:00:18,864
+We set up a directory to make sure that we have a place to put all of our data.
+
+7
+00:00:18,864 --> 00:00:23,609
+And, we have a cell that will go ahead and download the data for you.
+
+8
+00:00:23,609 --> 00:00:27,420
+And, just show up progress bars that downloads it.
+
+9
+00:00:27,420 --> 00:00:32,359
+Next, we have some code that actually sets up the data set itself.
+
+10
+00:00:32,359 --> 00:00:36,878
+Will actually, load the dataset out of the downloaded file,
+
+11
+00:00:36,878 --> 00:00:41,004
+will re-scale the features to the range negative one to positive one,
+
+12
+00:00:41,005 --> 00:00:43,170
+will plot a few of the examples so that you can look at
+
+13
+00:00:43,170 --> 00:00:45,390
+them and see what kind of data you're training on.
+
+14
+00:00:45,390 --> 00:00:49,545
+The dataset class is the first place that's really interesting to you for this notebook.
+
+15
+00:00:49,545 --> 00:00:51,734
+Where, you don't actually need to implement anything here
+
+16
+00:00:51,734 --> 00:00:54,789
+but you need to understand carefully what's going on.
+
+17
+00:00:54,789 --> 00:00:57,548
+We have this dataset class that represents both a training set,
+
+18
+00:00:57,548 --> 00:00:59,685
+the validation set and the test set.
+
+19
+00:00:59,685 --> 00:01:04,230
+For this notebook, we're going to be badly behaved and just disregard the validation set.
+
+20
+00:01:04,230 --> 00:01:07,721
+When you make a real product or research project,
+
+21
+00:01:07,721 --> 00:01:09,510
+you should use the validation set to guide
+
+22
+00:01:09,510 --> 00:01:12,390
+your development efforts and help you choose your hyper parameters and so on.
+
+23
+00:01:12,390 --> 00:01:15,290
+Here, just to make this exercise go a bit faster,
+
+24
+00:01:15,290 --> 00:01:18,988
+we're going to cut to the chase and just plot the tests set accuracy.
+
+25
+00:01:18,989 --> 00:01:22,560
+So, you are going to see exactly what you've accomplished in half an hour or
+
+26
+00:01:22,560 --> 00:01:25,108
+less of time running on
+
+27
+00:01:25,108 --> 00:01:29,839
+the GPU rather than how it separately calculate the validation set.
+
+28
+00:01:29,840 --> 00:01:31,950
+The issue that's most important for you to understand
+
+29
+00:01:31,950 --> 00:01:34,424
+is that Street View House Number dataset
+
+30
+00:01:34,424 --> 00:01:37,019
+is essentially fully labeled or
+
+31
+00:01:37,019 --> 00:01:40,125
+at least the portion of it that we're using for this network is fully labeled.
+
+32
+00:01:40,125 --> 00:01:42,665
+But, we were to learn about semi-supervised learning.
+
+33
+00:01:42,665 --> 00:01:46,254
+For semi-supervised learning you don't actually have access to all the labels.
+
+34
+00:01:46,254 --> 00:01:49,868
+So, what we're going to do is we're going to pretend that we don't have all these labels.
+
+35
+00:01:49,868 --> 00:01:53,849
+Specifically, we're going to use this label mask variable in
+
+36
+00:01:53,849 --> 00:01:56,995
+the dataset class to keep track of which labels
+
+37
+00:01:56,995 --> 00:02:00,444
+we're going to pretend we have and which labels are going to pretend we don't have.
+
+38
+00:02:00,444 --> 00:02:04,905
+We're going to restrict ourselves to train with only 1000 labeled examples.
+
+39
+00:02:04,905 --> 00:02:07,769
+That's a very tiny fraction of the actual number of
+
+40
+00:02:07,769 --> 00:02:10,780
+examples that we have available and labeled.
+
+41
+00:02:10,780 --> 00:02:14,193
+But we're going to see that we're able to learn from unlabeled examples,
+
+42
+00:02:14,193 --> 00:02:18,119
+if we ignore their label and just pretend that those weren't available.
+
+43
+00:02:18,120 --> 00:02:23,389
+The main function that you'll use to access the data set class is this batches method.
+
+44
+00:02:23,389 --> 00:02:27,180
+You just need to specify the batch size that you want and it will
+
+45
+00:02:27,180 --> 00:02:32,098
+yield an iterable set of batches that you can just go straight through.
+
+46
+00:02:32,098 --> 00:02:34,693
+You use the which set argument to request
+
+47
+00:02:34,693 --> 00:02:39,929
+either the training set or the test set or the validation set that we don't actually use.
+
+48
+00:02:39,930 --> 00:02:42,300
+We've already set up all of the calls for this method for
+
+49
+00:02:42,300 --> 00:02:45,120
+you but it's useful to you to understand what it's doing.
+
+50
+00:02:45,120 --> 00:02:48,389
+One of the wrinkles of this method is that depending on whether
+
+51
+00:02:48,389 --> 00:02:51,598
+we are looking at the training set or the test set,
+
+52
+00:02:51,598 --> 00:02:55,258
+we will either return or not return a set of label
+
+53
+00:02:55,258 --> 00:03:01,029
+masks that tell you whether you can use a particular label for training or not.
+
+54
+00:03:01,030 --> 00:03:02,490
+In the case of the training set,
+
+55
+00:03:02,490 --> 00:03:04,604
+we will actually include these label masks.
+
+56
+00:03:04,604 --> 00:03:06,213
+In all the other cases,
+
+57
+00:03:06,213 --> 00:03:08,234
+we will not include those label masks.
+
+58
+00:03:08,235 --> 00:03:10,389
+Because, when we evaluate the accuracy on the test set,
+
+59
+00:03:10,389 --> 00:03:13,919
+we actually want to check the accuracy for every single example.
+
+60
+00:03:13,919 --> 00:00:00,000
+So there's no point in having a label mask.
+

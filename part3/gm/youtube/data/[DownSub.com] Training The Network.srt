@@ -1,0 +1,228 @@
+1
+00:00:00,000 --> 00:00:04,575
+In this, so we go ahead and we set up the learning problem.
+
+2
+00:00:04,575 --> 00:00:06,807
+We specify the size of the images,
+
+3
+00:00:06,807 --> 00:00:10,150
+that's determined by the SVHN, dataset itself.
+
+4
+00:00:10,150 --> 00:00:13,288
+We specify the size of the Z Vector.
+
+5
+00:00:13,288 --> 00:00:15,855
+This is just a hyper parameter that you can play with,
+
+6
+00:00:15,855 --> 00:00:18,487
+100 seems to perform perfectly well,
+
+7
+00:00:18,487 --> 00:00:20,669
+and it's also reasonably computationally cheap.
+
+8
+00:00:20,670 --> 00:00:23,143
+And then we set the learning rate.
+
+9
+00:00:23,143 --> 00:00:28,279
+The learning rate for Adam for GANs seems relatively stable across tasks.
+
+10
+00:00:28,280 --> 00:00:32,337
+Here we're using .0003.
+
+11
+00:00:32,337 --> 00:00:36,570
+For image net, I found that basically the same learning rate works really well,
+
+12
+00:00:36,570 --> 00:00:38,579
+except that I changed the 3 to a 4.
+
+13
+00:00:38,579 --> 00:00:41,429
+And that's all the more that I had to change for that task.
+
+14
+00:00:41,429 --> 00:00:45,533
+So, this setup is somewhat portable from one task to another.
+
+15
+00:00:45,533 --> 00:00:49,579
+This is the cell where we actually call most of the computation.
+
+16
+00:00:49,579 --> 00:00:51,283
+So, most of the time that you run the notebook,
+
+17
+00:00:51,283 --> 00:00:54,484
+you'll spend most of your time watching this cell execute.
+
+18
+00:00:54,484 --> 00:00:56,740
+We allocate the dataset,
+
+19
+00:00:56,740 --> 00:00:59,505
+we configure the batch size to be 128,
+
+20
+00:00:59,505 --> 00:01:02,668
+and we ask the model to train for 25 epochs.
+
+21
+00:01:02,668 --> 00:01:04,500
+During the debugging stage,
+
+22
+00:01:04,500 --> 00:01:08,084
+you might try dropping that to like 2 epochs.
+
+23
+00:01:08,084 --> 00:01:10,533
+At the end of the training process,
+
+24
+00:01:10,533 --> 00:01:16,063
+we pull out the list of accuracies over time and we get some of the last samples.
+
+25
+00:01:16,063 --> 00:01:18,983
+We go ahead and we plot the learning curves,
+
+26
+00:01:18,983 --> 00:01:24,149
+showing how the accuracy improves on both the training set and the test set over time.
+
+27
+00:01:24,150 --> 00:01:27,150
+After you go ahead and actually run your notebook,
+
+28
+00:01:27,150 --> 00:01:29,670
+once you have everything implemented correctly,
+
+29
+00:01:29,670 --> 00:01:35,825
+you should find that the test accuracy peaks at around 69-71 percent
+
+30
+00:01:35,825 --> 00:01:38,879
+There's a lot of randomness in this notebook and we don't
+
+31
+00:01:38,879 --> 00:01:42,090
+actually use random seeds anywhere.
+
+32
+00:01:42,090 --> 00:01:44,938
+So, you don't always see the same results.
+
+33
+00:01:44,938 --> 00:01:48,113
+It is possible to make it deterministic by seeding everything.
+
+34
+00:01:48,114 --> 00:01:52,799
+I personally like to avoid doing that because when you move
+
+35
+00:01:52,799 --> 00:01:55,093
+to real world problems where you have to use things like
+
+36
+00:01:55,093 --> 00:01:57,869
+asynchronous training and cues that load your data,
+
+37
+00:01:57,870 --> 00:02:01,370
+it's more or less impossible to make those deterministic anyway.
+
+38
+00:02:01,370 --> 00:02:06,144
+So, I like to on even the small problems where it's possible to make them deterministic,
+
+39
+00:02:06,144 --> 00:02:08,985
+I like to have people get used to the randomness that's
+
+40
+00:02:08,985 --> 00:02:13,590
+inherent to working with deep learning on larger datasets.
+
+41
+00:02:13,590 --> 00:02:20,639
+But you should pretty consistently see a test accuracy above 68 percent or so.
+
+42
+00:02:20,639 --> 00:02:24,269
+At this point, you're probably wondering how well we're doing compared to other methods.
+
+43
+00:02:24,270 --> 00:02:26,038
+One baseline we can look at is there was
+
+44
+00:02:26,038 --> 00:02:29,519
+a NIPS 2014 paper on semi-supervised classification
+
+45
+00:02:29,520 --> 00:02:32,413
+of SVHN and using variational methods.
+
+46
+00:02:32,413 --> 00:02:35,413
+They used the same number of labels, 1,000 labels,
+
+47
+00:02:35,413 --> 00:02:36,762
+that we use in this notebook,
+
+48
+00:02:36,762 --> 00:02:39,530
+and they got 64 percent accuracy.
+
+49
+00:02:39,530 --> 00:02:44,389
+If you take the same model that we have here and you rerun it with all the labels,
+
+50
+00:02:44,389 --> 00:02:47,240
+I get above 80 percent accuracy pretty fast.
+
+51
+00:02:47,240 --> 00:02:48,658
+And if you train it for longer,
+
+52
+00:02:48,658 --> 00:02:49,799
+you might actually get better than that.
+
+53
+00:02:49,800 --> 00:02:52,020
+I didn't actually run it for very long.
+
+54
+00:02:52,020 --> 00:02:55,305
+There are other architectures that are larger than
+
+55
+00:02:55,305 --> 00:02:59,158
+the ones in this network that obtain much higher accuracy,
+
+56
+00:02:59,158 --> 00:03:02,038
+at least 98 percent accuracy and I'm not actually sure
+
+57
+00:03:02,038 --> 00:00:00,000
+what the state of the art is for the fully supervised version of this task.
+
