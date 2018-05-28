@@ -33,9 +33,12 @@
 |2018.05.14(월)|(음성인식 기초) 05. DIGITAL SIGNAL PROCESSING|송치성|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/speech/Digital-Signal-Processing_%EB%B0%94%EB%B2%A8%EC%8A%A4%ED%94%BC%EC%B9%98_%EC%86%A1%EC%B9%98%EC%84%B1.pdf)|
 ||(NLP)  Lecture 10 - Text to Speech (TTS)|최현철||
 ||(GM) Deep Convolutional GANs|박상원|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/gm/gan/DCGAN.pdf)|
-|2018.05.28(월)|(NLP)  Lecture 11 - Question Answering|홍수린||
+|2018.05.28(월)|(NLP)  Lecture 11 - Question Answering|홍수린|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part3/deepnlp_basic/QA/180528_Question_answering.pdf)|
 ||(NLP) Lecture 10 - Text to Speech (TTS)|최현철||
-||(GM) Semi-Supervised learning with GANs|박준영||
+||(GM) Semi-Supervised learning with GANs|이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part3/gm/gan/semi/Semi-SupervisedlearningwithGANs.ipynb)|
+|2018.06.11(월)|(음성인식 기초) 06. SPEECH SIGNAL REPRESENTATIONS|송치성||
+||(음성인식 기초) 07. SPEECH CODING|전재진||
+||(NLP)  Lecture 12 - Memory|주일택||
 
 
 ## Part2 커리큘럼
