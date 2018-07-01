@@ -7,15 +7,21 @@
 * 캐글뽀개기 : https://www.facebook.com/groups/kagglebreak/
 * 바벨피쉬 : https://www.facebook.com/groups/babelPish/
 * 구글드라이브 스케줄 : https://docs.google.com/spreadsheets/d/1vO5M5ygTE9P0TAMSpgR3Aw4Y_tO4l59ZzOqbcNKyphs/edit#gid=0
-* 장소 : 메가존(역삼역 3번 출구, 갈라빌딩 지하 1층)
-* 파트3은 격주 월요일
+* 장소 : 토즈 강남2호점 또는 토즈 강남점
+* 파트4은 격주 월요일
 
 ## 교재
-* (딥NLP 기초) Deep Learning for Natural Language Processing - https://github.com/oxford-cs-deepnlp-2017/lectures
+* (NL) Natural Language Natural Language Processing (Course materials for Georgia Tech CS 4650 and 7650, "Natural Language", 
+))
 * (음성인식 기초) Spoken Language Processing: A Guide to Theory, Algorithm and System Development
-* (Generative Model) Generative Adversarial Networks (GANs) by Udacity (https://www.nodalpoint.com/gans-udacity/)
 * (참고 자료) GAN 논문 모음 (https://github.com/wiseodd/generative-models)
 * (코드) 케라스 실습 (https://github.com/eriklindernoren/Keras-GAN)
+
+## Part4 커리큘럼
+|요일   |주제   |발표자   |발표자료   |
+|---|---|---|---|
+|2018.07.09(월)|(NL) 1. Introduction |이상열||
+||(음성인식 기초) 09. Acoustic Modeling |송치성||
 
 
 ## Part3 커리큘럼
