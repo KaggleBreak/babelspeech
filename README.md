@@ -20,7 +20,7 @@
 ## Part4 커리큘럼
 |요일   |주제   |발표자   |발표자료   |
 |---|---|---|---|
-|2018.07.09(월)|(NL) 1. Introduction |이상열||
+|2018.07.09(월)|(NL) 1. Introduction |이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part4/nl/Intro.ipynb)|
 ||(음성인식 기초) 09. Acoustic Modeling |송치성||
 
 
