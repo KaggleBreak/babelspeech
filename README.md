@@ -22,7 +22,7 @@
 |---|---|---|---|
 |2018.07.09(월)|(NL) 1. Introduction |이상열|[발표자료](https://nbviewer.jupyter.org/github/KaggleBreak/babelspeech/blob/master/part4/nl/Intro.ipynb)|
 ||(음성인식 기초) 09. Acoustic Modeling (1) |송치성||
-|2018.08.06(월)|(NL) 2. Linear text classification |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part4/nl/%EB%B0%94%EB%B2%A8%EC%8A%A4ED%94%BC%EC%B9%98_%ED%8C%8C%ED%8A%B84_Chapter2_Lineartextclassification.pdf)|
+|2018.08.06(월)|(NL) 2. Linear text classification |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part4/nl/%EB%B0%94%EB%B2%A8%EC%8A%A4%ED%94%BC%EC%B9%98_%ED%8C%8C%ED%8A%B84_Chapter2_Lineartextclassification.pdf)|
 ||(음성인식 기초) 09. Acoustic Modeling (2) |송치성||
 
 
