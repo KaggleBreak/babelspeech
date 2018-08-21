@@ -26,7 +26,8 @@
 ||(음성인식 기초) 09. Acoustic Modeling (2) |송치성|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part4/speech/%EB%B0%94%EB%B2%A8%EC%8A%A4%ED%94%BC%EC%B9%98_Acoustic%20Modeling_%EC%86%A1%EC%B9%98%EC%84%B1.pdf)|
 |2018.08.20(월)|(NL) 3. NonLinear text classification |이상열|[발표자료](https://github.com/KaggleBreak/babelspeech/blob/master/part4/nl/%EB%B0%94%EB%B2%A8%EC%8A%A4%ED%94%BC%EC%B9%98_%ED%8C%8C%ED%8A%B84_Chapter3_NonLinear.pdf)|
 ||(음성인식 실습) MFCCs 실습 |황영태|[발표자료](https://colab.research.google.com/drive/1TRBVOw_pX2QT7RmTf3HsTR5aFMrryt1u)|
-
+|2018.09.03(월)|(NL) 4. Linguistic applications of classification |이상열||
+||(음성인식 실습) EPD 실습 |송치성||
 
 
 ## Part3 커리큘럼
